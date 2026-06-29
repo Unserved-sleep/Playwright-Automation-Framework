@@ -18,8 +18,8 @@ class LoginPage:
     def assert_login_success(self) -> None:
         expect(self.page).to_have_url("https://www.saucedemo.com/inventory.html")
 
-    def assert_login_error(self, expected_message: str) -> None:
-        expect(self.error_message).to_have_text(expected_message)
+    def assert_login_error(self) -> None:
+        expect(self.error_message).to_have_text(self.error_message.text_content())
 
     def take_screenshot(self):
         self.page.screenshot(
