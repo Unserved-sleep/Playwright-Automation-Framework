@@ -8,9 +8,11 @@ class LoginPage:
         self.login_button = page.locator("[data-test='login-button']")
         self.error_message = page.locator('[data-test="error"]')
 
-    def login(self):
-        self.username_input.fill('standard_user')
-        self.password_input.fill('secret_sauce')
+    def login(self, username: str, password: str):
+        self.page.goto("https://www.saucedemo.com/")
+        self.username_input.fill(username)
+        self.password_input.fill(password)
+        self.take_screenshot()
         self.login_button.click()
 
     def assert_login_success(self) -> None:
@@ -18,3 +20,9 @@ class LoginPage:
 
     def assert_login_error(self, expected_message: str) -> None:
         expect(self.error_message).to_have_text(expected_message)
+
+    def take_screenshot(self):
+        self.page.screenshot(
+            path="artifacts/screenshots/login_page.png"
+        )
+

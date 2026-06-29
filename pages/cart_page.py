@@ -13,3 +13,8 @@ class CartPage:
 
     def click_checkout(self):
         self.checkout_button.click()
+
+    def take_screenshot(self):
+        self.page.screenshot(
+            path="artifacts/screenshots/cart_page.png"
+        )

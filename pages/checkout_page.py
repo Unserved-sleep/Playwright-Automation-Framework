@@ -24,3 +24,8 @@ class CheckoutPage:
         expect(self.page).to_have_url("https://www.saucedemo.com/checkout-complete.html")
         expect(self.complete_header).to_have_text("Thank you for your order!")
         expect(self.complete_text).to_contain_text("Your order has been dispatched")
+
+    def take_screenshot(self):
+        self.page.screenshot(
+            path="artifacts/screenshots/checkout_complete_page.png"
+        )

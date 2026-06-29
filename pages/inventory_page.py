@@ -1,21 +1,39 @@
+from playwright.sync_api import Page
+
+
 class InventoryPage:
-    def __init__(self, page):
+    def __init__(self, page: Page):
         self.page = page
-        self.title = page.locator(".title")
-        self.inventory_items = page.locator(".inventory_item")
-        self.shopping_cart_link = page.locator(".shopping_cart_link")
-        self.shopping_cart_badge = page.locator(".shopping_cart_badge")
-        self.backpack_add_button = page.locator("[data-test='add-to-cart-sauce-labs-backpack']")
-        self.bike_light_add_button = page.locator("[data-test='add-to-cart-sauce-labs-bike-light']")
 
-    def add_backpack_to_cart(self):
-        self.backpack_add_button.click()
+        self.item_list = page.locator(".inventory_item_name")
 
-    def add_bike_light_to_cart(self):
-        self.bike_light_add_button.click()
+    def item_count(self):
+        return self.item_list.count()
 
-    def go_to_cart(self):
-        self.shopping_cart_link.click()
+    def item_name(self):
+        return self.item_list.all_text_contents()
 
-    def get_cart_badge_count(self):
-        return self.shopping_cart_badge.inner_text()
+    def item_is_in_stock(self, item_list):
+        return self.page.locator(f'.inventory_item_name:test-is("{item_list}")'
+                                 ).is_visible()
+
+    def add_to_cart(self, item_name):
+        self.page.locator(".inventory_item"
+                          ).filter(has_text=item_name
+                                   ).locator("button").click()
+
+    def remove_from_cart(self, item_name):
+        self.page.locator(".inventory_item"
+                          ).filter(has_text=item_name
+                                   ).locator("button").click()
+
+    def cart_items(self):
+        return self.page.locator(".shopping_cart_badge").text_content()
+
+    def open_cart_page(self):
+        self.page.locator(".shopping_cart_link").click()
+
+    def take_screenshot(self):
+        self.page.screenshot(
+            path="artifacts/screenshots/inventory_page.png"
+        )
