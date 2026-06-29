@@ -1,4 +1,4 @@
-from pages.inventory_page import InventoryPage
+from pages.invntory_page import InventoryPage
 from pages.login_page import LoginPage
 
 def test_inventory_page(page):
