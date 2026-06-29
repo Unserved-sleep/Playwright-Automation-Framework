@@ -1,10 +1,8 @@
 from playwright.sync_api import Page
 
-
 class InventoryPage:
     def __init__(self, page: Page):
         self.page = page
-
         self.item_list = page.locator(".inventory_item_name")
 
     def item_count(self):

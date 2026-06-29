@@ -1,7 +1,6 @@
 from pages.login_page import LoginPage
 import pytest
 
-
 @pytest.mark.parametrize(
     "username,password,success",
     [

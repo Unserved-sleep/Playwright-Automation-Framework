@@ -3,7 +3,6 @@ from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 
-
 def test_checkout_flow(page):
     login_page = LoginPage(page)
     login_page.login("standard_user", "secret_sauce")
@@ -15,7 +14,6 @@ def test_checkout_flow(page):
     inv.add_to_cart("Sauce Labs Fleece Jacket")
     inv.open_cart_page()
 
-    # Cart Page Assertions
     cart_page = CartPage(page)
     cart_page.click_checkout()
 
