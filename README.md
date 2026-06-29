@@ -9,6 +9,7 @@ This project is an end-to-end web automation framework developed using **Playwri
 * Browser Automation
 * Page Object Model (POM)
 * Pytest Fixtures
+* Parameterizations
 * Assertions and Validations
 * Screenshots
 * Video Recording
@@ -40,9 +41,7 @@ This project is an end-to-end web automation framework developed using **Playwri
 
 ### Inventory Validation
 
-* Verify inventory page title and URL
 * Count available products
-* Print all product names
 * Validate product count
 
 ### Cart Validation
@@ -54,7 +53,6 @@ This project is an end-to-end web automation framework developed using **Playwri
 ### Checkout Flow
 
 * Complete the checkout process
-* Validate order confirmation message
 * Verify checkout completion page
 
 ### Reporting and Debugging
