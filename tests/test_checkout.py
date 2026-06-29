@@ -1,6 +1,6 @@
 from pages.LoginPage import LoginPage
-from pages.InventoryPage import InventoryPage
-from pages.CartPage import CartPage
+from pages.invetory_page import InventoryPage
+from pages.cart_page import CartPage
 from pages.CheckoutPage import CheckoutPage
 
 def test_checkout_flow(page):
@@ -9,8 +9,8 @@ def test_checkout_flow(page):
     login_page.assert_login_success()
 
     inventory_page = InventoryPage(page)
-    inventory_page.add_product_to_cart("Sauce Labs Backpack")
-    inventory_page.go_to_cart()
+    inventory_page.add_to_cart("Sauce Labs Backpack")
+    inventory_page.open_cart_page()
 
     cart_page = CartPage(page)
     cart_page.proceed_to_checkout()
