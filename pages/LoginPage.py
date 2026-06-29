@@ -8,9 +8,9 @@ class LoginPage:
         self.login_button = page.locator("[data-test='login-button']")
         self.error_message = page.locator('[data-test="error"]')
 
-    def login(self, username: str, password: str) -> None:
-        self.username_input.fill(username)
-        self.password_input.fill(password)
+    def login(self):
+        self.username_input.fill('standard_user')
+        self.password_input.fill('secret_sauce')
         self.login_button.click()
 
     def assert_login_success(self) -> None:
